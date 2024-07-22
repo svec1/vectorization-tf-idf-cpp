@@ -1,5 +1,3 @@
-include(GenerateExportHeader)
-include(GNUInstallDirs)
 set(export_file_name "export_shared.h")
 
 cmake_minimum_required(VERSION 3.12)

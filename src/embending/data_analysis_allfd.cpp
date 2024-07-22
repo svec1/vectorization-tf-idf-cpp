@@ -1,4 +1,5 @@
 #include "data_analysis_allf.hpp"
+#include <iostream>
 
 double* get_vect_nums(const char* text, size_t at_lang){
     std::string text_tmp(text);

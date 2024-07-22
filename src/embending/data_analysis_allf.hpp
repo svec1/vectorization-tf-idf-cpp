@@ -6,18 +6,17 @@
 
 #include "export.h"
 
-extern "C"{
+const size_t ANALYSIS_TEXT_LANG_RU = 0, ANALYSIS_TEXT_LANG_EN = 1;
 
-    const size_t ANALYSIS_TEXT_LANG_RU = 0, ANALYSIS_TEXT_LANG_EN = 1;
+extern "C"
+__DATA_ANALYSIS_EMB_EXPORT
+double *
+get_vect_nums(
+    const char *text,
+    size_t at_lang = ANALYSIS_TEXT_LANG_RU);
 
-    __DATA_ANALYSIS_EMB_EXPORT
-    double*
-        get_vect_nums(
-            const char* text,
-            size_t at_lang = ANALYSIS_TEXT_LANG_RU);
-
-    __DATA_ANALYSIS_EMB_EXPORT
-    void delete_vect_nums(double* vect_num);
-}
+extern "C"
+__DATA_ANALYSIS_EMB_EXPORT
+void delete_vect_nums(double *vect_num);
 
 #endif
