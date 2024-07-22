@@ -1,5 +1,5 @@
 #include "vectorization.hpp"
-//#include <iostream>
+#include <iostream>
 
 static double TF(const std::vector<std::string>& _words, const std::string& _word, size_t index){
     double count_word = 0, size_sent = 0;
@@ -35,21 +35,21 @@ std::vector<double> vec::vectorization(
                 size_t start_pos_sent = 0;
 
                 for(size_t i = 0; i < _words.size(); ++i){
-                    for(size_t j = 0; j < i; ++j){
-                        bool find = false;
-                        if(_words[j] == _words[i]){
-                            find = true;
-                            break;
-                        }
-                        if(find) continue;
-                    }
+                    bool find = false;
                     if(_words[i] == "*end*"){
                         start_pos_sent = i+1;
                         continue;
                     }
+                    for(size_t j = 0; j < i; ++j){
+                        if(_words[j] == _words[i]){
+                            find = true;
+                            break;
+                        }
+                    }
+                    if(find) continue;
                     
                     vec_vectorize_nums.push_back(TF(_words, _words[i], start_pos_sent)*IDF(_sents, _words[i]));
-                    //std::cout << "Vectorize number: " << std::to_string(vec_vectorize_nums[vec_vectorize_nums.size()-1]) << " " << _words[i] << std::endl;
+                    std::cout << "Vectorize number: " << std::to_string(vec_vectorize_nums[vec_vectorize_nums.size()-1]) << " " << _words[i] << std::endl;
                 }
                 return vec_vectorize_nums;
             }
